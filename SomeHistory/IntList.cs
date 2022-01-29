@@ -11,7 +11,6 @@ namespace SomeHistory
         public void Add(int car)
         {
             // not our business
-            throw new NotImplementedException();
         }
 
         public int this[int index]
