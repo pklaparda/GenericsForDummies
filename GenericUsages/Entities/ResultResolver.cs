@@ -8,11 +8,11 @@ namespace GenericUsages.Entities
 {
     public class ResultResolver
     {
-        public ResultSet<T> GetFailureResult<T>() where T : Item, new()
+        public ResultSet<T> GetFailureResult<T>(string msg) where T : Item, new()
         {
             // there were some issues with the external source.. we need a default response
             var result = new ResultSet<T>();
-            result.ErrorStatus = $"there was an issue with this {typeof(T).Name} item";
+            result.ErrorStatus = $"there was an issue with this {typeof(T).Name} item. {msg}";
             return result;
         }
 

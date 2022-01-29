@@ -14,8 +14,6 @@ namespace SomeHistory
         public void Add(Car car)
         {
             // not our business
-            var pepe = new Pepe();
-            var pepo = new Pepo();
         }
 
         public Car this[int index]
@@ -24,12 +22,4 @@ namespace SomeHistory
         }
     }
 
-    public abstract class Pepo
-    {
-
-    }
-    public class Pepe<T>
-    {
-
-    }
 }

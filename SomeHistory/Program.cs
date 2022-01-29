@@ -21,13 +21,14 @@ namespace SomeHistory
             intlist.Add(2);
             #endregion
 
+            //----------------------------------------------------------------------------------------------
 
             #region What happened twice
             // so Billy and company thought about a way improve things... the infamous ArrayList & HashTable
-            // Reason why you should never use an ArrayList:
+            // Reason why you should NEVER use an ArrayList:
             // - Performance: every get/set will implicate a boxing/unboxing operation
-            // - Unsafe: may produce runtime errors, like our old 'dynamic' friend
-            ArrayList arrayList = new()
+            // - Unsafe: may produce runtime errors, like our 'dynamic' friend
+            ArrayList numbersList = new()
             {
                 13.4,
                 12.2,
@@ -35,56 +36,60 @@ namespace SomeHistory
             };
 
             // the developer did not lose focus on the types
-            var secondsValue = (double)arrayList[1];
+            var someDoubleValue = (double)numbersList[1];
 
             try
             {
                 // the developer lost focus on the types... runtime exception... this try catch may not be there..
-                var thirdValue = (double)arrayList[2];
+                var someNotDoubleValue = (double)numbersList[2];
             }
             catch (InvalidCastException icEx)
             {
                 Console.WriteLine(icEx.Message);
             }
 
-            var carHashtable = new Hashtable();
-            carHashtable.Add("carOne", 1.1);
-            carHashtable.Add("carTwo", new Car { Brand = "Ford"});
-            carHashtable.Add("carthree", 2.2);
+            // example for Hashtable
+            var numbersHashtable = new Hashtable
+            {
+                { "one", 1.1 },
+                { "two", new Car { Brand = "Ford" } },
+                { "three", 2.2 }
+            };
 
             try
             {
                 // the developer lost focus on the types... runtime exception... this try catch may not be there..
-                var letsBreakIt = (double)carHashtable["carTwo"];
+                var notANumber = (double)numbersHashtable["two"];
             }
             catch (InvalidCastException icEx)
             {
                 Console.WriteLine(icEx.Message);
             }
 
-            // boxing and unboxing made these hash/array not be so performant..
+
+            // boxing and unboxing made these hash/array not so performant..
             Stopwatch stopwatch = new Stopwatch();
-            arrayList.Clear();
+            numbersList.Clear();
             stopwatch.Start();
             for (int i = 0; i < 3000; i++)
-                arrayList.Add(new Car { Brand = $"Audi{i}" });
-            foreach(Car car in arrayList)
+                numbersList.Add(new Car { Brand = $"Audi{i}" });
+            foreach(Car car in numbersList)
             {
                 Console.WriteLine($"this {car.Brand} is great");
             }
             stopwatch.Stop();
             var arrayListTime = (double)stopwatch.ElapsedMilliseconds / 1000;
-            
             stopwatch.Reset();
 
 
             #endregion
 
+            //----------------------------------------------------------------------------------------------
 
             #region And we're good to go 🎉🎉
             // so how can we reuse code, be performant and type safe?
             // Generic Collections
-            var carsList = new List<Car>();
+            var carsList = new List<Car>(); 
             carsList.Add(new Car());
 
             var intsList = new List<int>();
@@ -110,7 +115,7 @@ namespace SomeHistory
             stopwatch.Start();
             for (int i = 0; i < 3000; i++)
                 gCarList.Add(new Car { Brand = $"Audi{i}" });
-            foreach (Car car in arrayList)
+            foreach (Car car in numbersList)
             {
                 Console.WriteLine($"this {car.Brand} is great");
             }

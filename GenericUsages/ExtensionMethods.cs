@@ -1,36 +1,61 @@
 ﻿using GenericUsages.Entities;
 using GenericUsages.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GenericUsages
 {
     public static class ExtensionMethods
     {
-        public static int GetToStringLenght<TValue>(this TValue value)
+        /// <summary>
+        /// This method applies on every type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetToStringLenght<T>(this T value)
         {
             return value.ToString().Length;
         }
 
-        public static int GetPrimitiveToStringLenght<TValue>(this TValue value) where TValue : struct
+        /// <summary>
+        /// This method only applies on structs
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetPrimitiveToStringLenght<T>(this T value) where T : struct
         {
             return value.ToString().Length;
         }
 
-        public static int GetObjectToStringLenght<TValue>(this TValue value) where TValue : class
+        /// <summary>
+        /// This method only applies on classes
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetObjectToStringLenght<T>(this T value) where T : class
         {
             return value.ToString().Length;
         }
 
-        public static int GetPersonToStringLenght<TValue>(this TValue value) where TValue : notnull, Person
+        /// <summary>
+        /// This method only applies on Person-based classes
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetPersonToStringLenght<T>(this T value) where T : notnull, Person
         {
             return value.ToString().Length;
         }
 
-        public static int GetProfessionalToStringLenght<TValue>(this TValue value) where TValue : IProfessional
+        /// <summary>
+        /// This method applies only on classes implementing IProfessional interface
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetProfessionalToStringLenght<T>(this T value) where T : IProfessional
         {
             return value.ToString().Length;
         }
