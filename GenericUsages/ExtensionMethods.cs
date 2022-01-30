@@ -44,7 +44,7 @@ namespace GenericUsages
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static int GetPersonToStringLenght<T>(this T value) where T : notnull, Person
+        public static int GetPersonToStringLenght<T>(this T value) where T : Person
         {
             return value.ToString().Length;
         }

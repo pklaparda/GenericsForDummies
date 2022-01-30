@@ -5,8 +5,8 @@
 
     public class Test{
         public Test() { 
-            var abs = new AbsClass();
-            var gen = new GenClass<>();
+            //var abs = new AbsClass();
+            //var gen = new GenClass<>();
         }
     }
 }

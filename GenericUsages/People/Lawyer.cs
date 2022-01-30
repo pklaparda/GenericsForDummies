@@ -1,4 +1,5 @@
 ﻿using GenericUsages.Interfaces;
+using System;
 
 namespace GenericUsages.Entities
 {

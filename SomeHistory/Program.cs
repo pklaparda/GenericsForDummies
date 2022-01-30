@@ -13,12 +13,12 @@ namespace SomeHistory
             // A long time ago in an old .Net framework version...
             // there were no Generics collections (lists), 
             // you had to creat each of a kind:
-            var carlist = new CarList();
-            carlist.Add(new Car());
+            var oldCarlist = new CarList();
+            oldCarlist.Add(new Car());
 
-            var intlist = new IntList();
-            intlist.Add(1);
-            intlist.Add(2);
+            var oldIntlist = new IntList();
+            oldIntlist.Add(1);
+            oldIntlist.Add(2);
             #endregion
 
             //----------------------------------------------------------------------------------------------
@@ -71,11 +71,12 @@ namespace SomeHistory
             Stopwatch stopwatch = new Stopwatch();
             numbersList.Clear();
             stopwatch.Start();
-            for (int i = 0; i < 3000; i++)
+            // so bizare.. I can use the number list for cars if I want to...
+            for (int i = 0; i < 5000; i++)
                 numbersList.Add(new Car { Brand = $"Audi{i}" });
-            foreach(Car car in numbersList)
+            foreach(var car in numbersList)
             {
-                Console.WriteLine($"this {car.Brand} is great");
+                Console.WriteLine($"this {((Car)car).Brand} is great");
             }
             stopwatch.Stop();
             var arrayListTime = (double)stopwatch.ElapsedMilliseconds / 1000;
@@ -105,17 +106,17 @@ namespace SomeHistory
             // - better performance: no boxing/unboxing because the list is typed, no casts, no waste of resources
 
             // same for dictionaries:
-            var intStringDict = new Dictionary<int, string>();
-            intStringDict.Add(1, "value1");
-            intStringDict.Add(2, "value2");
+            var dict = new Dictionary<int, string>();
+            dict.Add(1, "value1");
+            dict.Add(2, "value2");
             // intStringDict.Add("3", "value3"); //not allowed at compilation time
 
             // performance with generic collections is better because is ditching the boxing/unboxing waste
-            var gCarList = new List<Car>();
+            carsList = new List<Car>();
             stopwatch.Start();
-            for (int i = 0; i < 3000; i++)
-                gCarList.Add(new Car { Brand = $"Audi{i}" });
-            foreach (Car car in numbersList)
+            for (int i = 0; i < 5000; i++)
+                carsList.Add(new Car { Brand = $"Audi{i}" });
+            foreach (var car in carsList)
             {
                 Console.WriteLine($"this {car.Brand} is great");
             }
