@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GenericUsages.Entities
+﻿namespace GenericUsages.Entities
 {
-    public class Vehicle<T>
+    public enum Vehicles
     {
-        public Vehicle(T id) {
+        Car,
+        Truck,
+        Bike
+    }
+
+    public class Vehicle<T> 
+    {
+        public Vehicle(T id, Vehicles type) {
             Id = id;
+            Type = type;
         }
 
         public T Id { get; set; }
-        public string Name { get; set; }
+        public Vehicles Type { get; set; }
+
+        public void Ride() { }
     }
 }

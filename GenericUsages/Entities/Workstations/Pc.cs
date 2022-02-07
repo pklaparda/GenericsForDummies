@@ -4,7 +4,7 @@ namespace GenericUsages.Entities
 {
     public class Pc : Workstation<long>, IWorkstation
     {
-        public Pc(long reportId): base(reportId)
+        public Pc(long serialNumber): base(serialNumber)
         {
         }
 

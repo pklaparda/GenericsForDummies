@@ -10,14 +10,14 @@ namespace GenericUsages.Entities
     public class ReferenceResolver
     {
         /// <summary>
-        /// Create or update, will log the received object and return base object.
+        /// Create or update, will log the RECEIVED object and return a NEW object with the BASE props only.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="item"></param>
         public void LogAndReturnBaseValuesOnly<T>(ref T item) where T : Item, new()
         {
             Console.WriteLine($"logging item before modifying it: {JsonSerializer.Serialize(item)}");
-            // let's say we want to log only the base object..
+            
             var itemCopy = new T();
             itemCopy.Id = item.Id;
             itemCopy.Name = item.Name;

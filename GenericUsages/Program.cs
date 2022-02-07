@@ -109,7 +109,7 @@ namespace GenericUsages
             ///*STRING*/
             //Console.WriteLine("Yechiel".GetPersonToStringLenght());
             ///*PERSON*/
-            //Console.WriteLine(new Lawyer().GetPersonToStringLenght<Person>());
+            //Console.WriteLine(new Lawyer().GetPersonToStringLenght());
             ///*PERSON*/
             //Console.WriteLine(new Doctor().GetPersonToStringLenght());
             ///*PERSON*/
@@ -128,12 +128,18 @@ namespace GenericUsages
             #region generic classes
 
             // basic
-            var car = new Vehicle<int>(1526);
-            var truck = new Vehicle<Guid>(Guid.NewGuid());
+            var car = new Vehicle<int>(1526, Vehicles.Car);
+            var truck = new Vehicle<Guid>(Guid.NewGuid(), Vehicles.Truck);
+
+            car.Ride();
+            truck.Ride();
+            // great, how can I list those vehicles and ride them all at once??
+            //-----------------------------------------------------------------------------------------------------------------
+
 
             // in this example we can get ralated entities to perform the same... well, not same same.
             // let's say I want to put all my workstations to process data
-            // even though they are all workstations, they serial number is of a different type
+            // even though they are all computers, their serial number is of a different type
             // regardless the serial number, everyithing is the same... how can I list them and process them with polimorphism
             // but have a custom typed-constructor for each??
             new List<IWorkstation>()
@@ -147,8 +153,14 @@ namespace GenericUsages
                 Console.WriteLine($"{workstation.GetType().Name} is done processing. Serial number: '{workstation.GetSerialNumber()}'");
             });
 
+
+
+            // another usage: Repository... we might learn about it another day :)
+            //-----------------------------------------------------------------------------------------------------------------
+
+
             // ref behavior remains the same with Generics, we can modify the value we send
-            var someCurrency = new Currency { Id = 1, Name = "NIS", ShortName = "New Israeli Shekel" };
+            var someCurrency = new Currency { Id = 1, Name = "NIS", ShortName = "New Israeli Shekel" }; // new Currency(1,"");
             Console.WriteLine($"Hash before modifying: {someCurrency.GetHashCode()}");
             new ReferenceResolver().LogAndReturnBaseValuesOnly(ref someCurrency);
             Console.WriteLine($"I'm not supposed to have a value on ShortName and the hash changed: {someCurrency.GetHashCode()}");

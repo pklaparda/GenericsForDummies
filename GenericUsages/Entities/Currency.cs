@@ -8,6 +8,11 @@ namespace GenericUsages.Entities
 {
     public class Currency : Item
     {
+        //public Currency(int id, string name, string shortName) : base(id, name)
+        //{
+        //    ShortName = shortName;
+        //}
+
         public string ShortName { get; set; }
     }
 }

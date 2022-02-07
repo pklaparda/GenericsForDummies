@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace SomeHistory
 {
@@ -92,14 +93,14 @@ namespace SomeHistory
             // Generic Collections
             var carsList = new List<Car>(); 
             carsList.Add(new Car());
-
+            // carsList.First();
             var intsList = new List<int>();
             intsList.Add(1);
             intsList.Add(2);
-            //intsList.Add("3"); // not allowed at compilation time
+            // intsList.Add("3"); // not allowed at compilation time
 
             // so this things are awesome, the collection is not typed but is just a template
-            // once the template is used with a real-strong type (primitive, struct, object..) we get a typed collection
+            // once the template is used with a real-strong type (primitive/struct, object..) we get a typed collection
             // this way we enhance a lot of advantages:
             // - reusable code: dont need to create a list for each kind
             // - type safety: the compiler will not allow me to Add a strange-type value, not defined at creation

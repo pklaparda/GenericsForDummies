@@ -1,9 +1,9 @@
 ﻿namespace GenericUsages.Entities
 {
-    public abstract class Workstation<T> where T : struct
+    public abstract class Workstation<TSerial> where TSerial : struct
     {
-        public T SerialNumber { get; set; }
-        public Workstation(T serialNumber)
+        public TSerial SerialNumber { get; set; }
+        public Workstation(TSerial serialNumber)
         {
             SerialNumber = serialNumber;
         }
