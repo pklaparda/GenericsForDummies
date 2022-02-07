@@ -12,6 +12,10 @@ namespace GenericUsages.Entities
         //{
         //    ShortName = shortName;
         //}
+        ////public Currency() : base(1, "")
+        ////{
+
+        ////}
 
         public string ShortName { get; set; }
     }

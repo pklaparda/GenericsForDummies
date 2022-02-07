@@ -16,6 +16,11 @@ namespace GenericUsages
             return value.ToString().Length;
         }
 
+        public static int GetToStringLenghtS<T>(T value)
+        {
+            return value.ToString().Length;
+        }
+
         /// <summary>
         /// This method only applies on structs
         /// </summary>

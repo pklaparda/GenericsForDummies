@@ -75,6 +75,9 @@ namespace GenericUsages
             ///*OBJECT*/
             //Console.WriteLine(new Lawyer().GetToStringLenght());
 
+            //// in case you're dizzy about the static extension methods... is like this:
+            //Console.WriteLine(ExtensionMethods.GetToStringLenghtS('H'));
+
 
             //// or you may want to limit the implementation to primitive (STRUCTS) types and don't allow everyone use a method
             //// because maybe is not prepared to hadle any type..
@@ -160,7 +163,7 @@ namespace GenericUsages
 
 
             // ref behavior remains the same with Generics, we can modify the value we send
-            var someCurrency = new Currency { Id = 1, Name = "NIS", ShortName = "New Israeli Shekel" }; // new Currency(1,"");
+            var someCurrency = new Currency{ Id = 1, Name = "New Israeli Shekel", ShortName = "NIS" }; // new Currency(1,"New Israeli Shekel","NIS");
             Console.WriteLine($"Hash before modifying: {someCurrency.GetHashCode()}");
             new ReferenceResolver().LogAndReturnBaseValuesOnly(ref someCurrency);
             Console.WriteLine($"I'm not supposed to have a value on ShortName and the hash changed: {someCurrency.GetHashCode()}");
